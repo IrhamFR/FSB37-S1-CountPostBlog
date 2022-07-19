@@ -2,7 +2,7 @@ let myblogs = []
 
 let addBlog = (event) => { 
     event.preventDefault()
-    const titleBlog = document.getElementById('titleBlog').value
+    const titleBlog = document.getElementById('input-blog-title').value
     let startBlog = document.getElementById("input-start-date").value
     let endBlog = document.getElementById("input-end-date").value
     const descriptionBlog = document.getElementById('desc-blog').value
@@ -48,13 +48,13 @@ const rendermyblog = () => {
                 <img src="${myblogs[i].image}" alt="" />
             </div>
             <div class="blog-content">
-                <a href="myblog-detail.html" class="title-blog">${myblogs[i].titleBlog}</a>
+                <a href="myblog-detail.html" class="title-card-blog">${myblogs[i].titleBlog}</a>
                 <p class="distance-card-blog">Duration : ${getDuration(myblogs[i].startBlog, myblogs[i].endBlog)}</p>
                 <p class="desc-card-blog">${myblogs[i].descriptionBlog}</p>
                 <div class="icon-blog">
                     ${(function icon() {
                     let string = ""
-                    for (let j = 0; j < blogs[i].checkedValue.length; j++) {
+                    for (let j = 0; j < myblogs[i].checkedValue.length; j++) {
                         string += `
                         <div class="item-icon-blog">
                             <i class="${myblogs[i].checkedValue[j]}"></i>
@@ -90,15 +90,15 @@ function getDuration(start, end) {
         } else {
             let daysDistance = Math.floor(distance / (24 * 60 * 60 * 1000))
             if (daysDistance != 0) {
-                return daysDistance + ' Days Ago'
+                return daysDistance + ' days ago'
             } else {
                 let hoursDistance = Math.floor(distance / (60 * 60 * 1000))
                 if (hoursDistance != 0) {
-                    return hoursDistance + ' Hours Ago'
+                    return hoursDistance + ' hours ago'
                 } else {
                     let minuteDistance = Math.floor(distance / (60 * 1000))
                     if (minuteDistance != 0) {
-                        return minuteDistance + ' Minutes Ago'
+                        return minuteDistance + ' minutes ago'
                     } else {
                         let secondDistance = Math.floor(distance / 1000)
                         if (secondDistance != 0)
